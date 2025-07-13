@@ -1,7 +1,9 @@
 import { COLORS } from "@/constants/theme";
+import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { styles } from "@/styles/feed.styles";
 import { Ionicons } from "@expo/vector-icons";
+import { useMutation } from "convex/react";
 import { formatDistanceToNow } from "date-fns";
 import { Image } from "expo-image";
 import { Link } from "expo-router";
@@ -27,9 +29,19 @@ type PostProps = {
 };
 
 export default function Post({ post }: PostProps) {
+  const [isLiked, setIsLiked] = useState(post.isLiked);
   const [showComments, setShowComments] = useState(false);
 
-  const handleLike = async () => {};
+  const toggleLike = useMutation(api.posts.toggleLike);
+
+  const handleLike = async () => {
+    try {
+      const newIsLiked = await toggleLike({ postId: post._id });
+      setIsLiked(newIsLiked);
+    } catch (error) {
+      console.error("Error toggling like:", error);
+    }
+  };
 
   const handleBookmark = async () => {};
 
@@ -76,7 +88,11 @@ export default function Post({ post }: PostProps) {
       <View style={styles.postActions}>
         <View style={styles.postActionsLeft}>
           <TouchableOpacity onPress={handleLike}>
-            <Ionicons name={"heart-outline"} size={24} color={COLORS.white} />
+            <Ionicons
+              name={isLiked ? "heart" : "heart-outline"}
+              size={24}
+              color={isLiked ? COLORS.primary : COLORS.white}
+            />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setShowComments(true)}>
             <Ionicons
