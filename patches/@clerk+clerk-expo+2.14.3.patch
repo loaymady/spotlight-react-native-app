@@ -1,0 +1,26 @@
+diff --git a/node_modules/@clerk/clerk-expo/dist/hooks/useOAuth.js b/node_modules/@clerk/clerk-expo/dist/hooks/useOAuth.js
+index b43c0a3..1e7d8fe 100644
+--- a/node_modules/@clerk/clerk-expo/dist/hooks/useOAuth.js
++++ b/node_modules/@clerk/clerk-expo/dist/hooks/useOAuth.js
+@@ -52,7 +52,7 @@ function useOAuth(useOAuthParams) {
+       };
+     }
+     const oauthRedirectUrl = (startOAuthFlowParams == null ? void 0 : startOAuthFlowParams.redirectUrl) || useOAuthParams.redirectUrl || AuthSession.makeRedirectUri({
+-      path: "oauth-native-callback"
++      path: "(tabs)"
+     });
+     await signIn.create({ strategy, redirectUrl: oauthRedirectUrl });
+     const { externalVerificationRedirectURL } = signIn.firstFactorVerification;
+diff --git a/node_modules/@clerk/clerk-expo/dist/hooks/useSSO.js b/node_modules/@clerk/clerk-expo/dist/hooks/useSSO.js
+index 7d74363..152134d 100644
+--- a/node_modules/@clerk/clerk-expo/dist/hooks/useSSO.js
++++ b/node_modules/@clerk/clerk-expo/dist/hooks/useSSO.js
+@@ -51,7 +51,7 @@ function useSSO() {
+     }
+     const { strategy, unsafeMetadata } = startSSOFlowParams != null ? startSSOFlowParams : {};
+     const redirectUrl = (_a = startSSOFlowParams.redirectUrl) != null ? _a : AuthSession.makeRedirectUri({
+-      path: "sso-callback"
++      path: "(tabs)"
+     });
+     await signIn.create({
+       strategy,
