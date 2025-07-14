@@ -9,6 +9,7 @@ import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import CommentsModal from "./CommentsModal";
 
 type PostProps = {
   post: {
@@ -72,7 +73,6 @@ export default function Post({ post }: PostProps) {
         {/* <TouchableOpacity>
           <Ionicons name="ellipsis-horizontal" size={20} color={COLORS.white} />
         </TouchableOpacity> */}
-        
       </View>
 
       {/* IMAGE */}
@@ -133,6 +133,12 @@ export default function Post({ post }: PostProps) {
           {formatDistanceToNow(post._creationTime, { addSuffix: true })}
         </Text>
       </View>
+
+      <CommentsModal
+        postId={post._id}
+        visible={showComments}
+        onClose={() => setShowComments(false)}
+      />
     </View>
   );
 }
