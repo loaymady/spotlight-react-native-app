@@ -12,6 +12,10 @@ It runs on **Android** and **iOS**, offering a smooth, responsive, and visually 
 
 👉 [Download the latest Android APK Release](https://github.com/loaymady/spotlight-react-native-app-/releases)
 
+<div align="center">
+  <img src="./spotlight-app-demo.webp" alt="Spotlight App Demo" width="300"/>
+</div>
+
 ---
 
 ## ✨ Features
