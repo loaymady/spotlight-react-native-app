@@ -19,7 +19,7 @@
     "@react-navigation/native": "^7.1.6",
     "convex": "^1.25.2",
     "date-fns": "^4.1.0",
-    "expo": "~53.0.17",
+    "expo": "~58.0.25",
     "expo-blur": "~14.1.5",
     "expo-constants": "~17.1.7",
     "expo-file-system": "~18.1.11",
